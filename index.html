@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAILY DIRECTION ARCHIVE</title>
+    <style>
+        :root { --main-color: #5d5fef; --bg-color: #f9f9fb; --text-dark: #2d2d2d; }
+        body { font-family: 'Pretendard', sans-serif; background: var(--bg-color); color: var(--text-dark); margin: 0; line-height: 1.6; }
+        
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: #fff; border-bottom: 1px solid #eee; position: sticky; top:0; z-index: 100; }
+        .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; color: var(--main-color); text-decoration: none; }
+        .nav-links a { text-decoration: none; color: #666; margin-left: 20px; font-size: 0.9rem; font-weight: 500; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+
+        /* Welcome Section */
+        .welcome { margin-bottom: 60px; text-align: center; }
+        .welcome h1 { font-size: 2.8rem; margin: 0; letter-spacing: -1.5px; }
+        .welcome p { color: #888; margin-top: 10px; font-size: 1.1rem; }
+
+        /* Grid Layout (중앙 집중형으로 변경) */
+        .main-content { max-width: 900px; margin: 0 auto; }
+
+        /* Sections */
+        .section-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; }
+        .section-title::before, .section-title::after { content: ''; flex: 1; height: 1px; background: #eee; margin: 0 20px; }
+
+        /* Member List */
+        .member-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 80px; }
+        .member-item { background: #fff; border-radius: 20px; padding: 30px 15px; text-align: center; border: 1px solid #eee; transition: 0.3s; cursor: pointer; }
+        .member-item:hover { border-color: var(--main-color); transform: translateY(-8px); box-shadow: 0 15px 30px rgba(93, 95, 239, 0.1); }
+        
+        .member-img { width: 110px; height: 110px; background: #f0f0f0; border-radius: 50%; margin: 0 auto 20px; overflow: hidden; border: 3px solid #fff; box-shadow: 0 0 0 1px #eee; }
+        .member-img img { width: 100%; height: 100%; object-fit: cover; }
+        .member-item strong { display: block; font-size: 1.05rem; margin-bottom: 6px; color: var(--text-dark); }
+        .member-item small { color: #aaa; font-size: 0.85rem; letter-spacing: 0.5px; }
+
+        /* Official Links (하단 강조형) */
+        .links-wrapper { background: #fff; border-radius: 20px; padding: 40px; border: 1px solid #eee; text-align: center; }
+        .social-icons { display: flex; gap: 30px; justify-content: center; align-items: center; margin-top: 20px; }
+        .social-icons img { transition: 0.3s; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05)); }
+        .social-icons a:hover img { transform: translateY(-5px); }
+
+        @media (max-width: 850px) { .member-list { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 500px) { .member-list { grid-template-columns: 1fr; } .welcome h1 { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#" class="logo">DAILY:DIRECTION</a>
+    <div class="nav-links">
+        <a href="#">MEMBERS</a>
+        <a href="#">MEDIA</a>
+    </div>
+</nav>
+
+<div class="container">
+    <section class="welcome">
+        <h1>Welcome, Directioner!</h1>
+    </section>
+
+    <div class="main-content">
+        <div class="section-title">THE MEMBERS</div>
+        <div class="member-list">
+            <a href="EN-KIM.html" style="text-decoration: none;"><div class="member-item">
+                <div class="member-img"><img src="image/Debut photo EN-KIM.jpg" alt="EN-KIM"></div>
+                <strong>EN-KIM</strong><small>2002.06.15</small>
+            </div></a>
+            
+            <a href="KIM JOOHYOUNG.html" style="text-decoration: none;"><div class="member-item">
+                <div class="member-img"><img src="image/Debut photo KIM JOOHYOUNG.jpg" alt="KIM JOOHYOUNG"></div>
+                <strong>KIM JOOHYOUNG</strong><small>2003.03.15</small>
+            </div></a>
+
+            <a href="LIM JIHWAN.html" style="text-decoration: none;"><div class="member-item">
+                <div class="member-img"><img src="image/Debut photo LIM JIHWAN.jpg" alt="LIM JIHWAN"></div>
+                <strong>LIM JIHWAN</strong><small>2003.05.24</small>
+            </div></a>
+
+            <a href="E-VAN.html" style="text-decoration: none;"><div class="member-item">
+                <div class="member-img"><img src="image/Debut photo E-VAN.jpg" alt="E-VAN"></div>
+                <strong>E-VAN</strong><small>2004.06.10</small>
+            </div></a>
+
+            <a href="LEE WONWOO.html" style="text-decoration: none;"><div class="member-item">
+                <div class="member-img"><img src="image/Debut photo LEE WONWOO.jpg" alt="LEE WONWOO"></div>
+                <strong>LEE WONWOO</strong><small>2005.10.16</small>
+            </div></a>
+
+            <a href="JANG YOONSEOK.html" style="text-decoration: none;"><div class="member-item">
+                <div class="member-img"><img src="image/Debut photo JANG YOONSEOK.jpg" alt="JANG YOONSEOK"></div>
+                <strong>JANG YOONSEOK</strong><small>XXXX.XX.XX</small>
+            </div></a>
+        </div>
+
+        <div class="section-title">OFFICIAL LINKS</div>
+        <div class="links-wrapper">
+            <div class="social-icons">
+                <a href="https://x.com/_official_DD" target="_blank"><img src="image/X (Twitter).jpg" alt="X" style="width: 28px; height: 28px;"></a>
+                <a href="https://www.instagram.com/daily_direction_official" target="_blank"><img src="image/Instagram.png" alt="IG" style="width: 32px; height: 32px;"></a>
+                <a href="https://youtube.com/@dailydirection_official" target="_blank"><img src="image/Youtube.png" alt="YT" style="width: 40px; height: auto;"></a>
+                <a href="https://www.tiktok.com/@daily_direction" target="_blank"><img src="image/Tiktok.jpeg" alt="TK" style="width: 32px; height: auto; border-radius: 6px;"></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer style="margin-top: 100px; padding: 40px; text-align: center; color: #ccc; font-size: 0.8rem;">
+    &copy; 2026 Dyase__. All Rights Reserved.
+</footer>
+
+</body>
+</html>
