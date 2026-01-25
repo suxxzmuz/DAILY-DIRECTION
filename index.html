@@ -4,111 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DAILY DIRECTION ARCHIVE</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <style>
-        :root { --main-color: #5d5fef; --bg-color: #f9f9fb; --text-dark: #2d2d2d; }
-        body { font-family: 'Pretendard', sans-serif; background: var(--bg-color); color: var(--text-dark); margin: 0; line-height: 1.6; }
-        
-        /* Navigation */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: #fff; border-bottom: 1px solid #eee; position: sticky; top:0; z-index: 100; }
-        .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; color: var(--main-color); text-decoration: none; }
-        .nav-links a { text-decoration: none; color: #666; margin-left: 20px; font-size: 0.9rem; font-weight: 500; }
+    /* 전역 변수 설정: 색상 및 공통 스타일 */
+    :root { --main-color: #5d5fef; --bg-color: #f9f9fb; --text-dark: #2d2d2d; --text-muted: #888; --white: #ffffff; --border-color: #eee; --card-shadow: 0 10px 20px rgba(93, 95, 239, 0.05); --transition: 0.3s ease; }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+    body { font-family: 'Pretendard', sans-serif; background: var(--bg-color); color: var(--text-dark); margin: 0; line-height: 1.6; word-break: keep-all; }
 
-        /* Welcome Section */
-        .welcome { margin-bottom: 60px; text-align: center; }
-        .welcome h1 { font-size: 2.8rem; margin: 0; letter-spacing: -1.5px; }
-        .welcome p { color: #888; margin-top: 10px; font-size: 1.1rem; }
+    /* 상단 내비게이션 바 */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; background: var(--white); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
+    .logo { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.5px; color: var(--main-color); text-decoration: none; }
 
-        /* Grid Layout (중앙 집중형으로 변경) */
-        .main-content { max-width: 900px; margin: 0 auto; }
+    /* 메인 컨테이너 */
+    .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
 
-        /* Sections */
-        .section-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; }
-        .section-title::before, .section-title::after { content: ''; flex: 1; height: 1px; background: #eee; margin: 0 20px; }
+    /* 제목 */
+    .welcome { margin-bottom: 50px; text-align: center; }
+    .welcome h1 { font-size: clamp(2rem, 5vw, 2.8rem); margin: 0; letter-spacing: -1.5px; font-weight: 800; }
 
-        /* Member List */
-        .member-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 80px; }
-        .member-item { background: #fff; border-radius: 20px; padding: 30px 15px; text-align: center; border: 1px solid #eee; transition: 0.3s; cursor: pointer; }
-        .member-item:hover { border-color: var(--main-color); transform: translateY(-8px); box-shadow: 0 15px 30px rgba(93, 95, 239, 0.1); }
-        
-        .member-img { width: 110px; height: 110px; background: #f0f0f0; border-radius: 50%; margin: 0 auto 20px; overflow: hidden; border: 3px solid #fff; box-shadow: 0 0 0 1px #eee; }
-        .member-img img { width: 100%; height: 100%; object-fit: cover; }
-        .member-item strong { display: block; font-size: 1.05rem; margin-bottom: 6px; color: var(--text-dark); }
-        .member-item small { color: #aaa; font-size: 0.85rem; letter-spacing: 0.5px; }
+    /* 공통 섹션 타이틀 스타일 */
+    .section-title { font-size: 1.1rem; font-weight: 700; margin: 40px 0 25px; display: flex; align-items: center; color: var(--text-dark); }
+    .section-title::before, .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border-color); margin: 0 15px; }
 
-        /* Official Links (하단 강조형) */
-        .links-wrapper { background: #fff; border-radius: 20px; padding: 40px; border: 1px solid #eee; text-align: center; }
-        .social-icons { display: flex; gap: 30px; justify-content: center; align-items: center; margin-top: 20px; }
-        .social-icons img { transition: 0.3s; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05)); }
-        .social-icons a:hover img { transform: translateY(-5px); }
+    /* 카드 및 아이템 공통 스타일 */
+    .card { background: var(--white); border-radius: 20px; border: 1px solid var(--border-color); transition: var(--transition); overflow: hidden; }
+    .card:hover { border-color: var(--main-color); transform: translateY(-5px); box-shadow: 0 12px 24px rgba(93, 95, 239, 0.1); }
 
-        @media (max-width: 850px) { .member-list { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 500px) { .member-list { grid-template-columns: 1fr; } .welcome h1 { font-size: 2rem; } }
-    </style>
+    /* 그룹 프로필 링크 카드 */
+    .group-link { display: flex; align-items: center; padding: 20px; text-decoration: none; color: inherit; margin-bottom: 25px; }
+    .group-thumb { width: 120px; height: 80px; border-radius: 12px; overflow: hidden; margin-right: 20px; background: #eee; }
+    .group-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .group-info strong { font-size: 1.2rem; color: var(--main-color); display: block; }
+
+    /* 멤버 리스트 그리드 */
+    .member-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .member-item { padding: 30px 15px; text-align: center; text-decoration: none; color: inherit; }
+    .member-img { width: 110px; height: 110px; margin: 0 auto 15px; border-radius: 50%; border: 3px solid var(--white); box-shadow: 0 0 0 1px var(--border-color); overflow: hidden; }
+    .member-img img { width: 100%; height: 100%; object-fit: cover; }
+    .member-item strong { display: block; font-size: 1.05rem; margin-bottom: 4px; }
+    .member-item small { color: var(--text-muted); font-size: 0.85rem; }
+
+    /* 공식 소셜 링크 섹션 */
+    .links-wrapper { padding: 40px; text-align: center; background: var(--white); border-radius: 20px; border: 1px solid var(--border-color); }
+    .social-icons { display: flex; gap: 25px; justify-content: center; align-items: center; }
+    .social-icons img { transition: var(--transition); opacity: 0.85; }
+    .social-icons a:hover img { transform: scale(1.15); opacity: 1; }
+
+    /* 푸터 */
+    footer { margin-top: 80px; padding: 40px; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
+
+    /* 반응형 설정: 화면 크기에 따른 레이아웃 변경 */
+    @media (max-width: 850px) { .member-list { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 550px) {
+        .member-list { grid-template-columns: 1fr; }
+        .group-link { flex-direction: column; text-align: center; }
+        .group-thumb { margin: 0 0 15px 0; width: 100%; height: 150px; }
+        .group-info { margin-bottom: 10px; }
+        .group-link span { display: none; }
+    }
+</style>
 </head>
 <body>
 
 <nav>
-    <a href="#" class="logo">DAILY:DIRECTION</a>
-    <!--<div class="nav-links">
-        <a href="#">MEMBERS</a>
-        <a href="#">ALBUM</a>
-    </div>-->
+    <a href="index.html" class="logo">DAILY:DIRECTION</a>
 </nav>
 
-<div class="container">
+<main class="container">
     <section class="welcome">
-        <h1>Welcome, Directioner!</h1>
+        <h1>DAILY:DIRECTION ARCHIVE</h1>
     </section>
 
-    <div class="main-content">
-        <div class="section-title">THE MEMBERS</div>
-        <div class="member-list">
-            <a href="EN-KIM.html" style="text-decoration: none;"><div class="member-item">
-                <div class="member-img"><img src="image/Debut photo EN-KIM.jpg" alt="EN-KIM"></div>
-                <strong>EN-KIM</strong><small>2002.06.15</small>
-            </div></a>
-            
-            <a href="KIM JOOHYOUNG.html" style="text-decoration: none;"><div class="member-item">
-                <div class="member-img"><img src="image/Debut photo KIM JOOHYOUNG.jpg" alt="KIM JOOHYOUNG"></div>
-                <strong>KIM JOOHYOUNG</strong><small>2003.03.15</small>
-            </div></a>
-
-            <a href="LIM JIHWAN.html" style="text-decoration: none;"><div class="member-item">
-                <div class="member-img"><img src="image/Debut photo LIM JIHWAN.jpg" alt="LIM JIHWAN"></div>
-                <strong>LIM JIHWAN</strong><small>2003.05.24</small>
-            </div></a>
-
-            <a href="E-VAN.html" style="text-decoration: none;"><div class="member-item">
-                <div class="member-img"><img src="image/Debut photo E-VAN.jpg" alt="E-VAN"></div>
-                <strong>E-VAN</strong><small>2004.06.10</small>
-            </div></a>
-
-            <a href="LEE WONWOO.html" style="text-decoration: none;"><div class="member-item">
-                <div class="member-img"><img src="image/Debut photo LEE WONWOO.jpg" alt="LEE WONWOO"></div>
-                <strong>LEE WONWOO</strong><small>2005.10.16</small>
-            </div></a>
-
-            <a href="JANG YOONSEOK.html" style="text-decoration: none;"><div class="member-item">
-                <div class="member-img"><img src="image/Debut photo JANG YOONSEOK.jpg" alt="JANG YOONSEOK"></div>
-                <strong>JANG YOONSEOK</strong><small>XXXX.XX.XX</small>
-            </div></a>
+    <div class="section-title">THE MEMBERS</div>
+    
+    <a href="DAIL DIRECTION.html" class="card group-link">
+        <div class="group-thumb">
+            <img src="image/Debut photo ALL MEMBERS (1).jpg" alt="데일리디렉션 단체 사진">
         </div>
+        <div class="group-info">
+            <strong>DAILY DIRECTION</strong>
+            <small></small>
+        </div>
+    </a>
 
-        <div class="section-title">OFFICIAL LINKS</div>
-        <div class="links-wrapper">
-            <div class="social-icons">
-                <a href="https://x.com/_official_DD" target="_blank"><img src="image/X (Twitter).jpg" alt="X" style="width: 28px; height: 28px;"></a>
-                <a href="https://www.instagram.com/daily_direction_official" target="_blank"><img src="image/Instagram.png" alt="IG" style="width: 32px; height: 32px;"></a>
-                <a href="https://youtube.com/@dailydirection_official" target="_blank"><img src="image/Youtube.png" alt="YT" style="width: 40px; height: auto;"></a>
-                <a href="https://www.tiktok.com/@daily_direction" target="_blank"><img src="image/Tiktok.jpeg" alt="TK" style="width: 32px; height: auto; border-radius: 6px;"></a>
-            </div>
+    <div class="member-list">
+        <a href="EN-KIM.html" class="card member-item">
+            <div class="member-img"><img src="image/Debut photo EN-KIM.jpg" alt="EN-KIM 프로필"></div>
+            <strong>EN-KIM</strong><small>2002.06.15</small>
+        </a>
+        <a href="KIM JOOHYOUNG.html" class="card member-item">
+            <div class="member-img"><img src="image/Debut photo KIM JOOHYOUNG.jpg" alt="김주형 프로필"></div>
+            <strong>KIM JOOHYOUNG</strong><small>2003.03.15</small>
+        </a>
+        <a href="LIM JIHWAN.html" class="card member-item">
+            <div class="member-img"><img src="image/Debut photo LIM JIHWAN.jpg" alt="임지환 프로필"></div>
+            <strong>LIM JIHWAN</strong><small>2003.05.24</small>
+        </a>
+        <a href="E-VAN.html" class="card member-item">
+            <div class="member-img"><img src="image/Debut photo E-VAN.jpg" alt="이반 프로필"></div>
+            <strong>E-VAN</strong><small>2004.06.10</small>
+        </a>
+        <a href="LEE WONWOO.html" class="card member-item">
+            <div class="member-img"><img src="image/Debut photo LEE WONWOO.jpg" alt="이원우 프로필"></div>
+            <strong>LEE WONWOO</strong><small>2005.10.16</small>
+        </a>
+        <a href="JANG YOONSEOK.html" class="card member-item">
+            <div class="member-img"><img src="image/Debut photo JANG YOONSEOK.jpg" alt="장윤석 프로필"></div>
+            <strong>JANG YOONSEOK</strong><small>XXXX.XX.XX</small>
+        </a>
+    </div>
+
+    <div class="section-title">OFFICIAL LINKS</div>
+    <div class="links-wrapper">
+        <div class="social-icons">
+            <a href="https://x.com/_official_DD" target="_blank" aria-label="X(트위터) 바로가기">
+                <img src="image/X (Twitter).jpg" alt="X" width="28" height="28">
+            </a>
+            <a href="https://www.instagram.com/daily_direction_official" target="_blank" aria-label="인스타그램 바로가기">
+                <img src="image/Instagram.png" alt="IG" width="32" height="32">
+            </a>
+            <a href="https://youtube.com/@dailydirection_official" target="_blank" aria-label="유튜브 바로가기">
+                <img src="image/Youtube.png" alt="YT" width="40" height="28">
+            </a>
+            <a href="https://www.tiktok.com/@daily_direction" target="_blank" aria-label="틱톡 바로가기">
+                <img src="image/Tiktok.jpeg" alt="TK" width="32" height="32" style="border-radius: 6px;">
+            </a>
         </div>
     </div>
-</div>
+</main>
 
-<footer style="margin-top: 100px; padding: 40px; text-align: center; color: #ccc; font-size: 0.8rem;">
+<footer>
     &copy; 2026 Dyase__. All Rights Reserved.
 </footer>
 
