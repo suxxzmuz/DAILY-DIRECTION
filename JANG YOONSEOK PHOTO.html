@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JANG YOONSEOK</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <style>
+    /* 디자인 시스템 유지 */
+    :root { --main-color: #5d5fef; --bg-color: #f9f9fb; --text-dark: #2d2d2d; --text-muted: #888; --white: #ffffff; --border-color: #eee; --transition: 0.3s ease; }
+    body { font-family: 'Pretendard', sans-serif; background: var(--bg-color); color: var(--text-dark); margin: 0; line-height: 1.6; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; background: var(--white); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
+    .logo { font-weight: 800; font-size: 1.25rem; color: var(--main-color); text-decoration: none; }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 30px 15px; }
+
+    /* 멤버 헤더 섹션 */
+    .member-header { text-align: center; margin-bottom: 40px; }
+    .member-header h1 { font-size: 2rem; margin: 0; letter-spacing: -1px; }
+    .member-header p { color: var(--text-muted); font-size: 0.9rem; margin-top: 5px; }
+
+    /* 사진 그리드 (모바일 2열) */
+    .photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+
+    .photo-item { background: var(--white); border-radius: 15px; border: 1px solid var(--border-color); overflow: hidden; transition: var(--transition); position: relative; }
+    
+    /* 사진 영역 */
+    .img-box { width: 100%; aspect-ratio: 1 / 1.2; overflow: hidden; background: #eee; }
+    .img-box img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+    
+    /* 다운로드 버튼 스타일 - 글자 중앙 고정 버전 */
+    .download-area { padding: 15px; display: flex; justify-content: center; background: var(--white); }
+    .download-btn { 
+        display: flex; align-items: center; justify-content: center; 
+        width: 100%; padding: 12px 0; background: var(--bg-color); 
+        color: var(--main-color); text-decoration: none; border-radius: 10px; 
+        font-size: 0.85rem; font-weight: 700; transition: var(--transition);
+        border: 1px solid var(--border-color);
+        position: relative; /* 아이콘 위치 조정을 위한 기준 */
+    }
+    .download-btn:hover { background: var(--main-color); color: var(--white); border-color: var(--main-color); }
+
+    /* 아이콘이 글자를 밀지 않도록 설정 (선택 사항) */
+    .download-btn svg { 
+        position: absolute; /* 글자 위치에 영향을 주지 않음 */
+        left: 15px; /* 왼쪽에 고정하거나, 글자와 함께 두려면 제거 */
+    }
+
+    /* 푸터 및 하단 내비게이션 */
+    .back-nav { margin-top: 50px; text-align: center; }
+    .back-link { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 600; }
+    footer { padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 0.8rem; }
+
+    /* 반응형: PC에서는 3열로 */
+    @media (min-width: 768px) {
+        .photo-grid { grid-template-columns: repeat(3, 1fr); gap: 25px; }
+    }
+</style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo">DAILY:DIRECTION</a>
+</nav>
+
+<main class="container">
+    <section class="member-header">
+        <h1>JANG YOONSEOK</h1>
+        <p>Concept Photo Archive</p>
+    </section>
+
+    <div class="photo-grid">
+        <div class="photo-item">
+            <div class="img-box">
+                <img src="image/Debut JANG YOONSEOK (1).jpg" alt="JANG YOONSEOK Photo 1">
+            </div>
+            <div class="download-area">
+                <a href="image/Debut JANG YOONSEOK (1).jpg" download="DD_JANG YOONSEOK_01.jpg" class="download-btn">
+                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="C4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    DOWNLOAD
+                </a>
+            </div>
+        </div>
+
+        <div class="photo-item">
+            <div class="img-box">
+                <img src="image/Debut JANG YOONSEOK (2).jpg" alt="JANG YOONSEOK Photo 2">
+            </div>
+            <div class="download-area">
+                <a href="image/Debut JANG YOONSEOK (2).jpg" download="DD_JANG YOONSEOK_02.jpg" class="download-btn">
+                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="C4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    DOWNLOAD
+                </a>
+            </div>
+        </div>
+
+        </div>
+
+    <div class="back-nav">
+        <a href="index PHOTO ZIP.html" class="back-link">&larr; Back to List</a>
+    </div>
+</main>
+
+<footer>
+    &copy; 2026 Dyase__. All Rights Reserved.
+</footer>
+
+</body>
+</html>

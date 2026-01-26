@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CONCEPT PHOTO | DAILY:DIRECTION</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <style>
+    /* 1. 디자인 시스템 (기존 유지 및 확장) */
+    :root { 
+        --main-color: #5d5fef; 
+        --bg-color: #f9f9fb; 
+        --text-dark: #2d2d2d; 
+        --text-muted: #888; 
+        --white: #ffffff; 
+        --border-color: #eee; 
+        --card-shadow: 0 8px 16px rgba(93, 95, 239, 0.08); 
+        --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); 
+    }
+
+    body { 
+        font-family: 'Pretendard', sans-serif; 
+        background: var(--bg-color); 
+        color: var(--text-dark); 
+        margin: 0; 
+        line-height: 1.5; 
+        word-break: keep-all; 
+        -webkit-tap-highlight-color: transparent; /* 모바일 터치 시 하이라이트 제거 */
+    }
+
+    /* 2. 내비게이션 (상단 고정) */
+    nav { 
+        display: flex; justify-content: space-between; align-items: center; 
+        padding: 0 5%; height: 60px; background: rgba(255, 255, 255, 0.8); 
+        backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color); 
+        position: sticky; top: 0; z-index: 1000; 
+    }
+    .logo { font-weight: 800; font-size: 1.1rem; color: var(--main-color); text-decoration: none; }
+
+    /* 3. 컨테이너 및 섹션 타이틀 */
+    .container { max-width: 600px; margin: 0 auto; padding: 20px 16px 80px; }
+    
+    .section-title { 
+        font-size: 0.9rem; font-weight: 700; color: var(--text-dark); 
+        margin: 30px 0 15px; display: flex; align-items: center; gap: 10px;
+    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border-color); }
+
+    /* 4. 카드 공통 스타일 */
+    .card { 
+        background: var(--white); border-radius: 18px; border: 1px solid var(--border-color); 
+        overflow: hidden; text-decoration: none; color: inherit; display: block;
+        transition: var(--transition);
+    }
+    .card:active { transform: scale(0.98); opacity: 0.9; } /* 터치 피드백 */
+
+    /* 5. 상단 단체 사진 (직사각형) */
+    .group-card { margin-bottom: 25px; box-shadow: var(--card-shadow); }
+    .group-img-wrapper { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #eee; }
+    .group-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+    .group-info { padding: 16px; display: flex; justify-content: space-between; align-items: center; }
+    .group-info strong { font-size: 1.05rem; letter-spacing: -0.3px; }
+    .group-info span { font-size: 0.8rem; color: var(--main-color); font-weight: 600; }
+
+    /* 6. 멤버 그리드 (2열 최적화) */
+    .member-grid { 
+        display: grid; 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 12px; /* 모바일에서 가장 보기 편한 간격 */
+    }
+    .member-card { padding: 10px; border-radius: 20px; text-align: center; }
+    .member-img-wrapper { 
+        width: 100%; aspect-ratio: 1 / 1.1; /* 세로가 살짝 더 긴 비율 */
+        border-radius: 14px; overflow: hidden; margin-bottom: 10px; background: #f0f0f0; 
+    }
+    .member-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+    .member-card strong { display: block; font-size: 0.95rem; margin-bottom: 2px; font-weight: 700; }
+    .member-card small { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; }
+
+    /* 7. 푸터 */
+    footer { padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 0.75rem; border-top: 1px solid var(--border-color); margin-top: 40px; }
+
+    /* PC/태블릿 환경에서도 보기 좋게 제한 */
+    @media (min-width: 600px) {
+        .container { padding-top: 40px; }
+        .group-info strong { font-size: 1.2rem; }
+    }
+</style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo">DAILY:DIRECTION</a>
+</nav>
+
+<main class="container">
+    <div class="section-title">ALL MEMBERS</div>
+    
+    <a href="DAILY DIRECTION PHOTO.html" class="card group-card">
+        <div class="group-img-wrapper">
+            <img src="image/Debut photo ALL MEMBERS (1).jpg" alt="Daily Direction Group" loading="lazy">
+        </div>
+        <div class="group-info">
+            <strong>GROUP PHOTO</strong>
+        </div>
+    </a>
+
+    <div class="section-title">MEMBER PHOTO</div>
+    
+    <div class="member-grid">
+        <a href="EN-KIM PHOTO.html" class="card member-card">
+            <div class="member-img-wrapper"><img src="image/Debut photo Profile EN-KIM.jpg" alt="EN-KIM" loading="lazy"></div>
+            <strong>EN-KIM</strong>
+            <small>CONCEPT PHOTO</small>
+        </a>
+        <a href="KIM JOOHYOUNG PHOTO.html" class="card member-card">
+            <div class="member-img-wrapper"><img src="image/Debut photo Profile KIM JOOHYOUNG.jpg" alt="JOOHYOUNG" loading="lazy"></div>
+            <strong>JOOHYOUNG</strong>
+            <small>CONCEPT PHOTO</small>
+        </a>
+        <a href="LIM JIHWAN PHOTO.html" class="card member-card">
+            <div class="member-img-wrapper"><img src="image/Debut photo Profile LIM JIHWAN.jpg" alt="JIHWAN" loading="lazy"></div>
+            <strong>JIHWAN</strong>
+            <small>CONCEPT PHOTO</small>
+        </a>
+        <a href="E-VAN PHOTO.html" class="card member-card">
+            <div class="member-img-wrapper"><img src="image/Debut photo Profile E-VAN.jpg" alt="E-VAN" loading="lazy"></div>
+            <strong>E-VAN</strong>
+            <small>CONCEPT PHOTO</small>
+        </a>
+        <a href="LEE WONWOO PHOTO.html" class="card member-card">
+            <div class="member-img-wrapper"><img src="image/Debut photo Profile LEE WONWOO.jpg" alt="WONWOO" loading="lazy"></div>
+            <strong>WONWOO</strong>
+            <small>CONCEPT PHOTO</small>
+        </a>
+        <a href="JANG YOONSEOK PHOTO.html" class="card member-card">
+            <div class="member-img-wrapper"><img src="image/Debut photo Profile JANG YOONSEOK.jpg" alt="YOONSEOK" loading="lazy"></div>
+            <strong>YOONSEOK</strong>
+            <small>CONCEPT PHOTO</small>
+        </a>
+    </div>
+</main>
+
+<footer>
+    &copy; 2026 Dyase__. All Rights Reserved.
+</footer>
+
+</body>
+</html>
