@@ -184,16 +184,6 @@
                 </div>
             </div>
         </div>
-
-        <div id="month-feb">
-            <div class="schedule-row">
-                <div class="date-badge"><span class="date-month">FEB</span><span class="date-day">01</span></div>
-                <div style="padding-top: 12px; font-size: 0.85rem;">
-                    <a href="#" class="txt-link"></a>
-                </div>
-            </div>
-        </div>
-        
     </div>
 </div>
 
@@ -208,8 +198,17 @@
     const janContent = document.getElementById('month-jan').innerHTML;
 
     // 2월 데이터 정의 
-    const febContent = document.getElementById('month-feb') ? document.getElementById('month-feb').innerHTML : null;
-
+    const febContent = `
+        <div id="month-feb">
+            <div class="schedule-row">
+                <div class="date-badge"><span class="date-month">FEB</span><span class="date-day">01</span></div>
+                <div style="padding-top: 12px; font-size: 0.85rem;">
+                    <a href="#" class="txt-link"></a>
+                </div>
+            </div>
+        </div>
+    `;
+    
     // 데이터가 없을 때 표시할 UI
     const getEmptyState = (name) => `
         <div style="text-align: center; padding: 60px 0; color: #ccc;">
