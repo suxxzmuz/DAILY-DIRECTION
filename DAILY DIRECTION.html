@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DAILY DIRECTION</title>
     <style>
-        :root { --main-color: #5d5fef; --bg-color: #f9f9fb; }
+        :root { --main-color: #5d5fef; --bg-color: #f9f9fb; --border-color: #eee; }
         body { font-family: 'Pretendard', sans-serif; background: var(--bg-color); margin: 0; padding: 0; }
         .back-nav { padding: 20px 5%; background: #fff; border-bottom: 1px solid #eee; }
         .back-nav a { text-decoration: none; color: #666; font-weight: 600; }
@@ -14,7 +14,7 @@
         .group-hero { width: 100%; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 40px; }
         .group-hero img { width: 100%; display: block; }
         
-        .content-box { background: #fff; padding: 40px; border-radius: 20px; border: 1px solid #eee; }
+        .content-box { background: #fff; padding: 40px; border-radius: 20px; border: 1px solid #eee; margin-bottom: 20px; }
         h1 { color: var(--main-color); margin-top: 0; }
         .info-label { font-weight: bold; color: #888; margin-right: 10px; }
         p { line-height: 1.8; color: #444; }
@@ -24,7 +24,15 @@
         .schedule-row { display: flex; align-items: flex-start; gap: 15px; padding: 12px 10px; border-bottom: 1px solid #f5f5f5; }
         .date-badge { min-width: 45px; height: 45px; background: #fff; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--border-color); font-family: sans-serif; }
         .date-month { font-size: 0.6rem; color: #888; font-weight: 700; }
-        .date-day { font-size: 1rem; font-weight: 800; color: var(--text-dark); line-height: 1; }
+        .date-day { font-size: 1rem; font-weight: 800; color: #333; line-height: 1; }
+
+        /* 추가된 버튼 스타일 */
+        .schedule-nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 10px 20px 10px; }
+        .nav-title { font-size: 0.8rem; font-weight: 800; color: #aaa; letter-spacing: 1px; text-transform: uppercase; }
+        .nav-btns { display: flex; align-items: center; gap: 15px; }
+        .nav-btns button { background: #fff; border: 1px solid #eee; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; color: #666; transition: 0.2s; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; }
+        .nav-btns button:hover { border-color: var(--main-color); color: var(--main-color); }
+        .current-month { font-size: 0.9rem; font-weight: 800; color: var(--main-color); min-width: 110px; text-align: center; }
     </style>
 </head>
 <body>
@@ -41,151 +49,194 @@
     <div class="content-box">
         <h1>DAILY:DIRECTION</h1>
         <p>DEBUT PROMOTION</p>
-        <!--<p><span class="info-label">데뷔일</span></p>
-        <p><span class="info-label">팬덤명</span></p>
-        <p><span class="info-label">그룹 컨셉</span></p>
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
-        <h3>GREETING</h3>
-        <p> </p>-->
     </div>
 
-    <div style="display: flex; flex-direction: column;">
+    <div class="schedule-nav">
+        <div class="nav-title">DEBUT PROMOTION SCHEDULE</div>
+        <div class="nav-btns">
+            <button onclick="changeMonth(-1)">&lt;</button>
+            <span class="current-month" id="month-display">JANUARY 2026</span>
+            <button onclick="changeMonth(1)">&gt;</button>
+        </div>
+    </div>
+
+    <div id="schedule-container" style="display: flex; flex-direction: column; background: #fff; border-radius: 20px; border: 1px solid #eee; padding: 10px; overflow: hidden;">
         
-        <div class="schedule-row">
-            <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">12</span></div>
-            <div style="padding-top: 4px; font-size: 0.9rem; font-weight: 700;">
-                <a href="https://youtu.be/x2S_U_WPiuU?si=kEHQqDyKMgr8q0_k" class="txt-link">🎬 DAILY:DIRECTION OFFICIAL LOGO TRAILER</a>
+        <div id="month-jan">
+            <div class="schedule-row">
+                <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">12</span></div>
+                <div style="padding-top: 4px; font-size: 0.9rem; font-weight: 700;">
+                    <a href="https://youtu.be/x2S_U_WPiuU?si=kEHQqDyKMgr8q0_k" class="txt-link">🎬 DAILY:DIRECTION OFFICIAL LOGO TRAILER</a>
+                </div>
             </div>
-        </div>
 
-        <div class="schedule-row">
-            <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">13</span></div>
-            <div style="font-size: 0.85rem; padding-top: 2px;">
-                <div style="margin-bottom: 4px;">🕕 18:00 | <a href="https://youtu.be/YomDzFzeZkw?si=_kfDQM6B88yh_Eq6" class="txt-link">Trace the spray, find the core.</a></div>
-                <div>🕗 20:00 | <a href="https://x.com/_official_DD/status/2011362656238899513?s=20" class="txt-link">Can't take my eyes off DD.</a></div>
+            <div class="schedule-row">
+                <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">13</span></div>
+                <div style="font-size: 0.85rem; padding-top: 2px;">
+                    <div style="margin-bottom: 4px;">🕕 18:00 | <a href="https://youtu.be/YomDzFzeZkw?si=_kfDQM6B88yh_Eq6" class="txt-link">Trace the spray, find the core.</a></div>
+                    <div>🕗 20:00 | <a href="https://x.com/_official_DD/status/2011362656238899513?s=20" class="txt-link">Can't take my eyes off DD.</a></div>
+                </div>
             </div>
-        </div>
 
-        <div class="schedule-row">
-            <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">14</span></div>
-            <div style="padding-top: 12px; font-size: 0.85rem;">
-                <a href="https://x.com/_official_DD/status/2011392857509179708?s=20" class="txt-link">📂 Confidential: Secret of Angel leaked.</a>
+            <div class="schedule-row">
+                <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">14</span></div>
+                <div style="padding-top: 12px; font-size: 0.85rem;">
+                    <a href="https://x.com/_official_DD/status/2011392857509179708?s=20" class="txt-link">📂 Confidential: Secret of Angel leaked.</a>
+                </div>
             </div>
-        </div>
 
-        <div class="schedule-row">
-            <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">15</span></div>
-            <div style="padding-top: 12px; font-size: 0.85rem;">
-                <a href="https://x.com/_official_DD/status/2011725040761651707?s=20" class="txt-link">📖 A new Chapter.</a>
+            <div class="schedule-row">
+                <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">15</span></div>
+                <div style="padding-top: 12px; font-size: 0.85rem;">
+                    <a href="https://x.com/_official_DD/status/2011725040761651707?s=20" class="txt-link">📖 A new Chapter.</a>
+                </div>
             </div>
-        </div>
 
-        <div class="schedule-row">
-            <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">16</span></div>
-            <div style="font-size: 0.85rem; padding-top: 2px;">
-                <div style="margin-bottom: 4px;">🕕 18:00 | <a href="https://x.com/_official_DD/status/2012087434557768092?s=20" class="txt-link">Behind the Still. 🪽</a></div>
-                <div>🕗 20:00 | <a href="https://x.com/_official_DD/status/2012117631948685324?s=20" class="txt-link">💅 Look closer, they are right here.</a></div>
+            <div class="schedule-row">
+                <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">16</span></div>
+                <div style="font-size: 0.85rem; padding-top: 2px;">
+                    <div style="margin-bottom: 4px;">🕕 18:00 | <a href="https://x.com/_official_DD/status/2012087434557768092?s=20" class="txt-link">Behind the Still. 🪽</a></div>
+                    <div>🕗 20:00 | <a href="https://x.com/_official_DD/status/2012117631948685324?s=20" class="txt-link">💅 Look closer, they are right here.</a></div>
+                </div>
             </div>
-        </div>
 
-        <div class="schedule-row">
-            <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">17</span></div>
-            <div style="font-size: 0.85rem; padding-top: 2px;">
-                <div style="margin-bottom: 4px;">🕕 18:00 | <a href="https://x.com/_official_DD/status/2012449824059043880?s=20" class="txt-link">Don't blink. 😵‍💫</a></div>
-                <div>🕗 20:00 | <a href="https://youtube.com/shorts/tyxtiyi5Hs8?si=pHPlo6DWWFli6Cer" class="txt-link">too fun to skip 🤞</a></div>
+            <div class="schedule-row">
+                <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">17</span></div>
+                <div style="font-size: 0.85rem; padding-top: 2px;">
+                    <div style="margin-bottom: 4px;">🕕 18:00 | <a href="https://x.com/_official_DD/status/2012449824059043880?s=20" class="txt-link">Don't blink. 😵‍💫</a></div>
+                    <div>🕗 20:00 | <a href="https://youtube.com/shorts/tyxtiyi5Hs8?si=pHPlo6DWWFli6Cer" class="txt-link">too fun to skip 🤞</a></div>
+                </div>
             </div>
-        </div>
 
-        <div class="schedule-row">
-            <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">18</span></div>
-            <div style="font-size: 0.85rem; padding-top: 2px;">
-                <div style="margin-bottom: 4px;">🕕 18:00 | <a href="https://x.com/_official_DD/status/2012812212675465417?s=20" class="txt-link">Game On. 🎮</a></div>
-                <div>🕗 20:00 | <a href="https://x.com/_official_DD/status/2012842406283251740?s=20" class="txt-link">💁‍♀️💭 : Searching for my boys 👀</a></div>
+            <div class="schedule-row">
+                <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">18</span></div>
+                <div style="font-size: 0.85rem; padding-top: 2px;">
+                    <div style="margin-bottom: 4px;">🕕 18:00 | <a href="https://x.com/_official_DD/status/2012812212675465417?s=20" class="txt-link">Game On. 🎮</a></div>
+                    <div>🕗 20:00 | <a href="https://x.com/_official_DD/status/2012842406283251740?s=20" class="txt-link">💁‍♀️💭 : Searching for my boys 👀</a></div>
+                </div>
             </div>
-        </div>
 
-        <div style="padding: 15px 10px; border-bottom: 1px solid #f5f5f5;">
-            <div style="font-size: 0.75rem; font-weight: 800; color: #aaa; margin-bottom: 12px; letter-spacing: 1px;">MEMBER REVEAL</div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.85rem;">
-                <div style="padding: 8px; border-radius: 8px; border: 1px solid #eee; background: #fff;"><strong>19</strong> <a href="JANG YOONSEOK PHOTO.html" class="txt-link">JANG YOONSEOK</a></div>
-                <div style="padding: 8px; border-radius: 8px; border: 1px solid #eee; background: #fff;"><strong>20</strong> <a href="LIM JIHWAN PHOTO.html" class="txt-link">LIM JIHWAN</a></div>
-                <div style="padding: 8px; border-radius: 8px; border: 1px solid #eee; background: #fff;"><strong>21</strong> <a href="KIM JOOHYOUNG PHOTO.html" class="txt-link">KIM JOOHYOUNG</a></div>
-                <div style="padding: 8px; border-radius: 8px; border: 1px solid #eee; background: #fff;"><strong>22</strong> <a href="LEE WONWOO PHOTO.html" class="txt-link">LEE WONWOO</a></div>
-                <div style="padding: 8px; border-radius: 8px; border: 1px solid #eee; background: #fff;"><strong>23</strong> <a href="E-VAN PHOTO.html" class="txt-link">E-VAN</a></div>
-                <div style="padding: 8px; border-radius: 8px; border: 1px solid #eee; background: #fff;"><strong>24</strong> <a href="EN-KIM PHOTO.html" class="txt-link">EN-KIM</a></div>
+            <div style="padding: 15px 10px; border-bottom: 1px solid #f5f5f5;">
+                <div style="font-size: 0.75rem; font-weight: 800; color: #aaa; margin-bottom: 12px; letter-spacing: 1px;">MEMBER REVEAL</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.85rem;">
+                    <div style="padding: 8px; border-radius: 8px; border: 1px solid #eee; background: #fff;"><strong>19</strong> <a href="JANG YOONSEOK PHOTO.html" class="txt-link">JANG YOONSEOK</a></div>
+                    <div style="padding: 8px; border-radius: 8px; border: 1px solid #eee; background: #fff;"><strong>20</strong> <a href="LIM JIHWAN PHOTO.html" class="txt-link">LIM JIHWAN</a></div>
+                    <div style="padding: 8px; border-radius: 8px; border: 1px solid #eee; background: #fff;"><strong>21</strong> <a href="KIM JOOHYOUNG PHOTO.html" class="txt-link">KIM JOOHYOUNG</a></div>
+                    <div style="padding: 8px; border-radius: 8px; border: 1px solid #eee; background: #fff;"><strong>22</strong> <a href="LEE WONWOO PHOTO.html" class="txt-link">LEE WONWOO</a></div>
+                    <div style="padding: 8px; border-radius: 8px; border: 1px solid #eee; background: #fff;"><strong>23</strong> <a href="E-VAN PHOTO.html" class="txt-link">E-VAN</a></div>
+                    <div style="padding: 8px; border-radius: 8px; border: 1px solid #eee; background: #fff;"><strong>24</strong> <a href="EN-KIM PHOTO.html" class="txt-link">EN-KIM</a></div>
+                </div>
             </div>
-        </div>
 
-        <div class="schedule-row">
+            <div class="schedule-row">
                 <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">24</span></div>
                 <div style="padding-top: 12px; font-size: 0.85rem;">
-                    <div>🕗 20:00 | <a href="https://youtube.com/shorts/hGg2eVaET2I?si=2e1AK2tb2LYtdbYU" class="txt-link"> Caught you!</a>
+                    <div>🕗 20:00 | <a href="https://youtube.com/shorts/hGg2eVaET2I?si=2e1AK2tb2LYtdbYU" class="txt-link"> Caught you!</a></div>
+                </div>
+            </div>
+
+            <div class="schedule-row">
+                <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">25</span></div>
+                <div style="padding-top: 12px; font-size: 0.85rem;">
+                    <a href="DAILY DIRECTION PHOTO.html" class="txt-link">DAILY:DIRECTION</a>
+                </div>
+            </div>
+
+            <div class="schedule-row">
+                <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">26</span></div>
+                <div style="padding-top: 12px; font-size: 0.85rem;">
+                    <a href="https://youtube.com/shorts/N6h4I7vKrkY?si=mAGC32sPmHQhYDTh" class="txt-link">⛓️ VISUAL FILM | KIM JOO HYOUNG ⛓️</a>
+                </div>
+            </div>
+
+            <div class="schedule-row">
+                <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">27</span></div>
+                <div style="padding-top: 12px; font-size: 0.85rem;">
+                    <a href="https://youtube.com/shorts/wESljyC2j3Y?si=AIqdsaHmupruI56q" class="txt-link">🪽 VISUAL FILM | JANG YOON SEOK 🪽</a>
+                </div>
+            </div>
+
+            <div class="schedule-row">
+                <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">28</span></div>
+                <div style="padding-top: 12px; font-size: 0.85rem;">
+                    <a href="https://youtube.com/shorts/1jqUhwKnYTU?si=DdqwwKwuH37JLorT" class="txt-link">🪨 VISUAL FILM | EN KIM 🪨</a>
+                </div>
+            </div>
+
+            <div class="schedule-row">
+                <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">29</span></div>
+                <div style="padding-top: 12px; font-size: 0.85rem;">
+                    <a href="https://youtube.com/shorts/YMui3VZwCAs?si=CX9KJJjxfcYmNAN0" class="txt-link">🔹 VISUAL FILM | LEE WON WOO 🔹</a>
+                </div>
+            </div>
+
+            <div class="schedule-row">
+                <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">30</span></div>
+                <div style="padding-top: 12px; font-size: 0.85rem;">
+                    <a href="https://youtube.com/shorts/BMKEbKIHjJI?si=Czz2dcjkOMTC3t6-" class="txt-link">🌱 VISUAL FILM | LIM JI HWAN 🌱</a>
+                </div>
+            </div>
+
+            <div class="schedule-row">
+                <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">31</span></div>
+                <div style="padding-top: 12px; font-size: 0.85rem;">
+                    <a href="https://youtube.com/shorts/gdeRUW642yw?si=tpi3g7_I8YqO5UFp" class="txt-link">🦜 VISUAL FILM | E-VAN 🦜</a>
                 </div>
             </div>
         </div>
 
-        <div class="schedule-row">
-            <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">25</span></div>
-            <div style="padding-top: 12px; font-size: 0.85rem;">
-                <a href="DAILY DIRECTION PHOTO.html" class="txt-link">DAILY:DIRECTION</a>
-            </div>
-        </div>
-
-        <div class="schedule-row">
-            <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">26</span></div>
-            <div style="padding-top: 12px; font-size: 0.85rem;">
-                <a href="https://youtube.com/shorts/N6h4I7vKrkY?si=mAGC32sPmHQhYDTh" class="txt-link">⛓️ VISUAL FILM | KIM JOO HYOUNG ⛓️</a>
-            </div>
-        </div>
-
-        <div class="schedule-row">
-            <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">27</span></div>
-            <div style="padding-top: 12px; font-size: 0.85rem;">
-                <a href="https://youtube.com/shorts/wESljyC2j3Y?si=AIqdsaHmupruI56q" class="txt-link">🪽 VISUAL FILM | JANG YOON SEOK 🪽</a>
-            </div>
-        </div>
-
-        <div class="schedule-row">
-            <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">28</span></div>
-            <div style="padding-top: 12px; font-size: 0.85rem;">
-                <a href="https://youtube.com/shorts/1jqUhwKnYTU?si=DdqwwKwuH37JLorT" class="txt-link">🪨 VISUAL FILM | EN KIM 🪨</a>
-            </div>
-        </div>
-
-        <div class="schedule-row">
-            <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">29</span></div>
-            <div style="padding-top: 12px; font-size: 0.85rem;">
-                <a href="https://youtube.com/shorts/YMui3VZwCAs?si=CX9KJJjxfcYmNAN0" class="txt-link">🔹 VISUAL FILM | LEE WON WOO 🔹</a>
-            </div>
-        </div>
-
-         <div class="schedule-row">
-            <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">30</span></div>
-            <div style="padding-top: 12px; font-size: 0.85rem;">
-                <a href="https://youtube.com/shorts/BMKEbKIHjJI?si=Czz2dcjkOMTC3t6-" class="txt-link">🌱 VISUAL FILM | LIM JI HWAN 🌱</a>
-            </div>
-        </div>
-
-        <div class="schedule-row">
-            <div class="date-badge"><span class="date-month">JAN</span><span class="date-day">31</span></div>
-            <div style="padding-top: 12px; font-size: 0.85rem;">
-                <a href="https://youtube.com/shorts/gdeRUW642yw?si=tpi3g7_I8YqO5UFp" class="txt-link">🦜 VISUAL FILM | E-VAN 🦜</a>
-            </div>
-        </div>
-
-        <!--<div style="display: flex; align-items: center; gap: 15px; padding: 15px 10px;">
-            <div style="min-width: 45px; height: 45px; background: #fcfcfc; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid #eee; font-size: 1.2rem;">🚀</div>
-            <div>
-                <div style="font-size: 1rem; font-weight: 800; color: var(--text-dark);">
-                    <a href="#" class="txt-link">DAILY:DIRECTION COMING SOON</a>
+        <div id="month-feb">
+            <div class="schedule-row">
+                <div class="date-badge"><span class="date-month">FEB</span><span class="date-day">01</span></div>
+                <div style="padding-top: 12px; font-size: 0.85rem;">
+                    <a href="#" class="txt-link"></a>
                 </div>
-                <div style="font-size: 0.75rem; color: var(--main-color); font-weight: 700;">2026.xx.xx DEBUT</div>
             </div>
-        </div>-->
-
+        </div>
+        
     </div>
-    
 </div>
+
+<script>
+    const months = [
+        { id: 'month-jan', name: 'JANUARY 2026' },
+        { id: 'month-feb', name: 'FEBRUARY 2026' }
+    ];
+    let currentIdx = 0;
+
+    // 1월 데이터 저장
+    const janContent = document.getElementById('month-jan').innerHTML;
+
+    // 2월 데이터 정의 
+    const febContent = document.getElementById('month-feb') ? document.getElementById('month-feb').innerHTML : null;
+
+    // 데이터가 없을 때 표시할 UI
+    const getEmptyState = (name) => `
+        <div style="text-align: center; padding: 60px 0; color: #ccc;">
+            <div style="font-size: 2rem; margin-bottom: 10px;">📅</div>
+            <div style="font-size: 0.9rem; font-weight: 600;">${name} 스케줄이 곧 업데이트됩니다.</div>
+        </div>`;
+
+    function changeMonth(step) {
+        const nextIdx = currentIdx + step;
+        if (nextIdx < 0 || nextIdx >= months.length) return; 
+
+        currentIdx = nextIdx;
+        const display = document.getElementById('month-display');
+        const container = document.getElementById('schedule-container');
+
+        display.innerText = months[currentIdx].name;
+
+        // 월별 컨텐츠 전환 로직
+        if (months[currentIdx].id === 'month-jan') {
+            container.innerHTML = janContent;
+        } else if (months[currentIdx].id === 'month-feb') {
+            container.innerHTML = febContent;
+        } else {
+            container.innerHTML = getEmptyState(months[currentIdx].name);
+        }
+    }
+</script>
 
 </body>
 </html>
